@@ -9,12 +9,13 @@ import { ActivatedRoute } from '@angular/router';
 export class BuscarHeroesComponent implements OnInit {
 
   heroes: Heroe[];
+  termino: string;
 
   constructor(  private _heroesService: HeroesService,
                 private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( params => {
-      const termino = params['termino'];
-      this.heroes = this._heroesService.buscarHeroes(termino);
+      this.termino = params['termino'];
+      this.heroes = this._heroesService.buscarHeroes(this.termino);
     });
   }
 
